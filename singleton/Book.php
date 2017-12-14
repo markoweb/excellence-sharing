@@ -25,7 +25,7 @@ class Book implements Publication
         $this->closed = true;
     }
 
-    public function setPageNumber($page)
+    public function setPageNumber(int $page)
     {
         if ($this->closed !== false || $this->pageCount < $page) {
             return false;

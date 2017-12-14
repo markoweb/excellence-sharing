@@ -31,7 +31,7 @@ abstract class PublicationProxy implements Publication
         return $this->publication->getPageNumber();
     }
 
-    public function getDailyRate($days = 1)
+    public function getDailyRate(int $days = 1)
     {
         return $this->publication->getDailyRate($days);
     }
