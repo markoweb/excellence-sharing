@@ -1,0 +1,29 @@
+@startuml
+
+interface Publication
+
+abstract class AbstractPublisher {
+    # name
+    + AbstractPublisher(name)
+    # createPublication(pageCount): Publication
+    + sellPublication(pageCount): Publication
+}
+
+class BookPublisher {
+    # createPublication(pageCount): Publication
+}
+
+class JournalPublisher {
+    # createPublication(pageCount): Publication
+}
+
+Publication <|.. Journal
+Publication <|.. Book
+
+AbstractPublisher <|-- BookPublisher
+AbstractPublisher <|-- JournalPublisher
+
+Journal <. JournalPublisher
+Book <. BookPublisher
+
+@enduml

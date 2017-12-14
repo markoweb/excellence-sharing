@@ -1,0 +1,18 @@
+@startuml
+
+interface Publication
+
+class Creator {
+    + {static} factoryMethod(): Publication
+    + mathodA()
+}
+
+class ConcreteCreator {
+    +factoryMethod(): Publication
+}
+
+Publication <|.. ConcreteProduct
+Creator <|-- ConcreteCreator
+ConcreteProduct <. ConcreteCreator
+
+@enduml
