@@ -1,6 +1,6 @@
 <?php
 
-namespace abstractFactory;
+namespace AbstractFactory;
 
 class HtmlTable implements Table
 {
