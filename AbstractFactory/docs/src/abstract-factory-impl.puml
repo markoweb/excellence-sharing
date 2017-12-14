@@ -1,0 +1,66 @@
+@startuml
+
+class PublicationList {
+    # tableFactory
+    + PublicationList(tf: TableFactory)
+    + displayTable(data)
+}
+interface TableFactory {
+    + createCell(content)
+    + createRow()
+    + creteHeader()
+    + creteTable()
+}
+abstract class Cell {
+    #content
+    +Cell(content)
+    +show()
+}
+abstract class Row {
+    #cells
+    +addCell(cell: Cell)
+    +show()
+}
+abstract class Header
+abstract class Table {
+    #rows
+    #header
+    +addRow(header: Header)
+    +show()
+}
+class HtmlTableFactory {
+    + createCell(content): HtmlCell
+    + createRow(): HtmlRow
+    + creteHeader(): HtmlHeader
+    + creteTable(): HtmlTable
+}
+class HtmlCell {
+    +show()
+}
+class HtmlRow {
+    +show()
+}
+class HtmlHeader {
+    +show()
+}
+class HtmlTable {
+    +show()
+}
+
+PublicationList --> TableFactory
+PublicationList --> Cell
+PublicationList --> Row
+PublicationList --> Header
+PublicationList --> Table
+Row <|- Header
+TableFactory <|.. HtmlTableFactory
+Cell <|-- HtmlCell
+Row <|-- HtmlRow
+"Header" <|-- HtmlHeader
+Table <|-- HtmlTable
+HtmlTableFactory .> HtmlCell
+HtmlTableFactory .> HtmlRow
+HtmlTableFactory .> HtmlHeader
+HtmlTableFactory .> HtmlTable
+
+@enduml
