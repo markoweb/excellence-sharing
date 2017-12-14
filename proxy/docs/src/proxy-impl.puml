@@ -1,0 +1,48 @@
+@startuml
+
+interface Publication {
+    + open()
+    + close()
+    + setPageNumber(page)
+    + getPageNumber()
+    + getDailyRate(day)
+    + getCategory()
+    + getPageCount()
+}
+
+class Book {
+    + open()
+    + close()
+    + setPageNumber(page)
+    + getPageNumber()
+    + getDailyRate(day)
+    + getCategory()
+    + getPageCount()
+}
+
+abstract class PublicationProxy {
+    # publication : Publication
+    + PublicationProxy(publication: Publication)
+    + open()
+    + close()
+    + setPageNumber(page)
+    + getPageNumber()
+    + getDailyRate(day)
+    + getCategory()
+    + getPageCount()
+}
+
+class PrepaidPublicationProxy {
+    + PrepaidPublicationProxy(publication, startPage, endPage)
+    + setPageNumber(page)
+}
+
+Client -> Publication
+
+Publication <|.. Book
+Publication <|.. PublicationProxy
+Book <- PublicationProxy
+
+PublicationProxy <|-- PrepaidPublicationProxy
+
+@enduml
