@@ -1,0 +1,10 @@
+@startuml
+
+class DebuggerEcho {
+    - {static} instance: DebuggerEcho
+    # DebuggerEcho()
+    + {static} getInstance(): DebuggerEcho
+    - __clone()
+}
+
+@enduml

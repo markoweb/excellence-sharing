@@ -1,0 +1,13 @@
+@startuml
+
+class Singleton {
+    - {static} instance: Singleton
+    - attribute1
+    - attribute2
+    # Singleton()
+    + {static} getInstance(): Singleton
+    + method1()
+    + method2()
+}
+
+@enduml
