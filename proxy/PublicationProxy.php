@@ -2,6 +2,8 @@
 
 namespace Proxy;
 
+use Singleton\Publication;
+
 abstract class PublicationProxy implements Publication
 {
     protected $publication;

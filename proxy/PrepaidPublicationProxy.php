@@ -2,6 +2,8 @@
 
 namespace Proxy;
 
+use Singleton\Publication;
+
 class PrepaidPublicationProxy extends PublicationProxy
 {
     protected $startPage;

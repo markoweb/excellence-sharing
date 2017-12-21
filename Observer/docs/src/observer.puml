@@ -1,0 +1,29 @@
+@startuml
+
+interface Observable {
+    +attach(observer: Observer)
+    +detach(observer: Observer)
+    +notify()
+}
+interface Observer {
+    +update(observable: Observable)
+}
+class ConcreteSubject {
+    #onservers: Observer
+    #subjectState
+    +attach(observer: Observer)
+    +detach(observer: Observer)
+    +notify()
+    +getState()
+}
+class ConcreteObserver {
+    #observerState
+    +update(observable: Observable)
+}
+
+Observable -> Observer
+Observable <|.. ConcreteSubject
+Observer <|.. ConcreteObserver
+ConcreteSubject <- ConcreteObserver
+
+@enduml

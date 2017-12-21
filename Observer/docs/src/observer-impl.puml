@@ -1,0 +1,37 @@
+@startuml
+
+interface Observable {
+    +attach(observer: Observer)
+    +detach(observer: Observer)
+    +notify()
+}
+interface Observer {
+    +update(observable: Observable)
+}
+class LaserPrinter {
+    #observers: Observer
+    #pageCounter
+    +attach(observer: Observer)
+    +detach(observer: Observer)
+    +notify()
+    +getPageCounter()
+}
+class ObserverInitialCheck {
+    #checkPageCounter
+    +ObserverInitialCheck(pageCounter)
+    +update(observable: Observable)
+}
+class ObserverRegularCheck {
+    #nextCheck
+    #interval
+    +ObserverRegularCheck(start, interval)
+    +update(observable: Observable)
+}
+Observable -> Observer
+Observable <|.. LaserPrinter
+Observer <|.. ObserverInitialCheck
+Observer <|.. ObserverRegularCheck
+LaserPrinter <- ObserverInitialCheck
+LaserPrinter <- ObserverRegularCheck
+
+@enduml

@@ -19,12 +19,6 @@ class Book implements Publication
         $this->closed = false;
     }
 
-    public function close()
-    {
-        $this->setPageNumber(0);
-        $this->closed = true;
-    }
-
     public function setPageNumber(int $page)
     {
         if ($this->closed !== false || $this->pageCount < $page) {
@@ -37,5 +31,36 @@ class Book implements Publication
     public function getPageNumber()
     {
         return $this->pageNumber;
+    }
+
+    public function close()
+    {
+        $this->setPageNumber(0);
+        $this->closed = true;
+    }
+
+    public function __destruct()
+    {
+        if (! $this->closed) {
+            $this->close();
+        }
+    }
+
+    public function getDailyRate(int $days = 1)
+    {
+        if ($days >= 14) {
+            return 7.50;
+        }
+        return 10;
+    }
+
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    public function getPageCount()
+    {
+        return $this->pageCount;
     }
 }
